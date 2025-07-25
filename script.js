@@ -6,7 +6,23 @@ document.addEventListener("click", (e) => {
   let userSelection = getUserSelection(e.target);
   let compSelection = getCompSelection();
 
-  if (userSelection === "rock")
+  if (userSelection === compSelection) {
+    updateView("It's a tie!");
+  } else {
+    if (userSelection === "rock") {
+      compSelection === "paper"
+        ? updateView(compWins())
+        : updateView(userWins());
+    } else if (userSelection === "paper") {
+      compSelection === "scissors"
+        ? updateView(compWins())
+        : updateView(userWins());
+    } else if (userSelection === "scissor") {
+      compSelection === "rock"
+        ? updateView(compWins())
+        : updateView(userWins());
+    }
+  }
 });
 //  Collect and store user input (rock, paper, or scissors)
 function getUserSelection(target) {
@@ -23,4 +39,15 @@ function getCompSelection() {
 //      if else accounting for user and computer inputs
 //  Alert the winner
 //      create user wins message
+function updateView(message = "Make a selection, if you dare...") {
+  let para = document.getElementById("gameboard-para");
+  para.textContent = message;
+}
+
+function userWins() {
+  return "Let's gooo! You won!";
+}
 //      create computer wins message
+function compWins() {
+  return "Bummer! Better luck next time.";
+}
