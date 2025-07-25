@@ -39,9 +39,8 @@ function getCompSelection() {
 //      if else accounting for user and computer inputs
 //  Alert the winner
 //      create user wins message
-function updateView(message = "Make a selection, if you dare...") {
-  let para = document.getElementById("gameboard-para");
-  para.textContent = message;
+function updateView(message) {
+  document.getElementById("gameboard-para") = message;
 }
 
 function userWins() {
