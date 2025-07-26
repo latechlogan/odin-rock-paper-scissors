@@ -31,9 +31,7 @@ document.addEventListener("click", (e) => {
           : updateView(userWins());
       }
     }
-    console.log(
-      `Games played: ${gamesPlayed}, Games won: ${gamesWon}, Win % ${calcWinPercentage()}`
-    );
+    updateView("", "", "", calcWinPercentage());
   }
 });
 
@@ -64,7 +62,9 @@ function updateView(message, userSelection, compSelection, winPercent) {
 
   if (winPercent) {
     if (document.getElementById("win-percentage") === null) {
-      //create element
+      let para = document.createElement("p");
+      para.setAttribute("id", "win-percentage");
+      document.getElementById("gameboard-dialog").appendChild(para);
     }
     //update element
   }
