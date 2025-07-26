@@ -96,6 +96,16 @@ body {
 
 .gameboard__para {
   font-size: 1.728rem;
+  text-align: center;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+}
+
+.gameboard__win-percentage {
+  color: rgba(34, 34, 34, 0.64);
+  text-align: center;
+  text-wrap: balance;
+  line-height: 1.4;
 }
 
 .gameboard__btn-wrapper {
