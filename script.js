@@ -63,10 +63,19 @@ function updateView(message, userSelection, compSelection, winPercent) {
   if (winPercent) {
     if (document.getElementById("win-percentage") === null) {
       let para = document.createElement("p");
+      para.setAttribute("class", "gameboard__win-percentage");
       para.setAttribute("id", "win-percentage");
       document.getElementById("gameboard-dialog").appendChild(para);
     }
-    //update element
+    if (gamesPlayed < 10) {
+      document.getElementById("win-percentage").textContent = `
+        Play ${10 - gamesPlayed} more games to see your win percentage.
+      `;
+    } else {
+      document.getElementById("win-percentage").textContent = `
+        Win Percentage: ${winPercent}
+      `;
+    }
   }
 }
 
