@@ -3,27 +3,29 @@ const CHOICES = ["Rock", "Paper", "Scissors"];
 
 // Start game sequence with user click
 document.addEventListener("click", (e) => {
-  let userSelection = getUserSelection(e.target);
-  let compSelection = getCompSelection();
+  if (e.target.value != null || e.target.value != undefined) {
+    let userSelection = getUserSelection(e.target);
+    let compSelection = getCompSelection();
 
-  updateView("", userSelection, compSelection);
+    updateView("", userSelection, compSelection);
 
-  //  Compare user input to computer input
-  if (userSelection === compSelection) {
-    updateView("It's a tie!");
-  } else {
-    if (userSelection === "Rock") {
-      compSelection === "Paper"
-        ? updateView(compWins())
-        : updateView(userWins());
-    } else if (userSelection === "Paper") {
-      compSelection === "Scissors"
-        ? updateView(compWins())
-        : updateView(userWins());
-    } else if (userSelection === "scissor") {
-      compSelection === "Rock"
-        ? updateView(compWins())
-        : updateView(userWins());
+    //  Compare user input to computer input
+    if (userSelection === compSelection) {
+      updateView("It's a tie!");
+    } else {
+      if (userSelection === "Rock") {
+        compSelection === "Paper"
+          ? updateView(compWins())
+          : updateView(userWins());
+      } else if (userSelection === "Paper") {
+        compSelection === "Scissors"
+          ? updateView(compWins())
+          : updateView(userWins());
+      } else if (userSelection === "scissor") {
+        compSelection === "Rock"
+          ? updateView(compWins())
+          : updateView(userWins());
+      }
     }
   }
 });
