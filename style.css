@@ -3,11 +3,15 @@
 
 /* global styles */
 html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -33,10 +37,18 @@ body {
 }
 
 /* section/element styles */
-.gameboard {
-  width: calc(100%);
-  height: calc(100%);
+html,
+body {
+  width: 100vw;
+  height: 100vh;
   padding: 0;
+  margin: 0;
+}
+
+.gameboard {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
   margin: 0;
   display: grid;
   grid-template-columns: 1fr;
