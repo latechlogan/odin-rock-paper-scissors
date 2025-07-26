@@ -55,9 +55,9 @@ function updateView(message, userSelection, compSelection) {
 }
 
 function userWins() {
-  return "Let's gooo! You won!";
+  return "You win!";
 }
 
 function compWins() {
-  return "Bummer! Better luck next time.";
+  return "You lose...";
 }
