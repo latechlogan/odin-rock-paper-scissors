@@ -6,6 +6,7 @@ document.addEventListener("click", (e) => {
   let userSelection = getUserSelection(e.target);
   let compSelection = getCompSelection();
 
+  updateView("", userSelection, compSelection);
 
   //  Compare user input to computer input
   if (userSelection === compSelection) {
@@ -39,8 +40,18 @@ function getCompSelection() {
 }
 
 //  Alert the winner
-function updateView(message) {
-  document.getElementById("gameboard-para") = message;
+function updateView(message, userSelection, compSelection) {
+  if (message) {
+    document.getElementById("gameboard-para").textContent = message;
+  }
+
+  if (userSelection) {
+    document.getElementById("user-selection").textContent = userSelection;
+  }
+
+  if (compSelection) {
+    document.getElementById("computer-selection").textContent = compSelection;
+  }
 }
 
 function userWins() {
