@@ -70,10 +70,7 @@ function compWins() {
   return "You lose...";
 }
 
-function calcWinPercentage() {
-  winPercentage = gamesWon / gamesPlayed;
-  return winPercentage;
-}
+calcWinPercentage = () => gamesWon / gamesPlayed;
 
 // [x] Create variable to store games played
 // [x] Create variable to store games user won
