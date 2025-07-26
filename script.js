@@ -31,7 +31,9 @@ document.addEventListener("click", (e) => {
           : updateView(userWins());
       }
     }
-    console.log(`Games played: ${gamesPlayed}, Games won: ${gamesWon}`);
+    console.log(
+      `Games played: ${gamesPlayed}, Games won: ${gamesWon}, Win % ${calcWinPercentage()}`
+    );
   }
 });
 
@@ -47,7 +49,7 @@ function getCompSelection() {
 }
 
 //  Alert the winner
-function updateView(message, userSelection, compSelection) {
+function updateView(message, userSelection, compSelection, winPercent) {
   if (message) {
     document.getElementById("gameboard-para").textContent = message;
   }
@@ -58,6 +60,13 @@ function updateView(message, userSelection, compSelection) {
 
   if (compSelection) {
     document.getElementById("computer-selection").textContent = compSelection;
+  }
+
+  if (winPercent) {
+    if (document.getElementById("win-percentage") === null) {
+      //create element
+    }
+    //update element
   }
 }
 
@@ -70,11 +79,14 @@ function compWins() {
   return "You lose...";
 }
 
-calcWinPercentage = () => gamesWon / gamesPlayed;
+function calcWinPercentage() {
+  let decimal = gamesWon / gamesPlayed;
+  return `${(decimal * 100).toFixed(2)}%`;
+}
 
 // [x] Create variable to store games played
 // [x] Create variable to store games user won
-// [ ] Calculate user win percentage
+// [x] Calculate user win percentage
 // [ ] Display user win percentage
 // [ ] Reset win percentage with button in view
 // [ ] --Clear variables when reset is clicked
