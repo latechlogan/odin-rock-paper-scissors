@@ -61,3 +61,10 @@ function userWins() {
 function compWins() {
   return "You lose...";
 }
+
+// Create variable to store games played
+// Create variable to store games user won
+// Calculate user win percentage
+// Display user win percentage
+// Reset win percentage with button in view
+//      Clear variables when reset is clicked
