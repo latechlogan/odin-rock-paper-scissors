@@ -1,5 +1,5 @@
-// Create rock, paper, scissors array
-const CHOICES = ["rock", "paper", "scissors"];
+// Create Rock, Paper, Scissors array
+const CHOICES = ["Rock", "Paper", "Scissors"];
 
 // Start game sequence with user click
 document.addEventListener("click", (e) => {
@@ -12,23 +12,23 @@ document.addEventListener("click", (e) => {
   if (userSelection === compSelection) {
     updateView("It's a tie!");
   } else {
-    if (userSelection === "rock") {
-      compSelection === "paper"
+    if (userSelection === "Rock") {
+      compSelection === "Paper"
         ? updateView(compWins())
         : updateView(userWins());
-    } else if (userSelection === "paper") {
-      compSelection === "scissors"
+    } else if (userSelection === "Paper") {
+      compSelection === "Scissors"
         ? updateView(compWins())
         : updateView(userWins());
     } else if (userSelection === "scissor") {
-      compSelection === "rock"
+      compSelection === "Rock"
         ? updateView(compWins())
         : updateView(userWins());
     }
   }
 });
 
-//  Collect and store user input (rock, paper, or scissors)
+//  Collect and store user input (Rock, Paper, or Scissors)
 function getUserSelection(target) {
   return target.value;
 }
