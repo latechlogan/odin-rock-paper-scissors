@@ -25,7 +25,7 @@ document.addEventListener("click", (e) => {
         compSelection === "Scissors"
           ? updateView(compWins())
           : updateView(userWins());
-      } else if (userSelection === "scissor") {
+      } else if (userSelection === "Scissors") {
         compSelection === "Rock"
           ? updateView(compWins())
           : updateView(userWins());
