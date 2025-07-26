@@ -1,9 +1,13 @@
 // Create Rock, Paper, Scissors array
 const CHOICES = ["Rock", "Paper", "Scissors"];
 
+let gamesPlayed = 0;
+let gamesWon = 0;
+
 // Start game sequence with user click
 document.addEventListener("click", (e) => {
   if (e.target.value != null || e.target.value != undefined) {
+    gamesPlayed++;
     let userSelection = getUserSelection(e.target);
     let compSelection = getCompSelection();
 
@@ -27,6 +31,7 @@ document.addEventListener("click", (e) => {
           : updateView(userWins());
       }
     }
+    console.log(`Games played: ${gamesPlayed}, Games won: ${gamesWon}`);
   }
 });
 
@@ -57,6 +62,7 @@ function updateView(message, userSelection, compSelection) {
 }
 
 function userWins() {
+  gamesWon++;
   return "You win!";
 }
 
@@ -64,9 +70,14 @@ function compWins() {
   return "You lose...";
 }
 
-// Create variable to store games played
-// Create variable to store games user won
-// Calculate user win percentage
-// Display user win percentage
-// Reset win percentage with button in view
-//      Clear variables when reset is clicked
+function calcWinPercentage() {
+  winPercentage = gamesWon / gamesPlayed;
+  return winPercentage;
+}
+
+// [x] Create variable to store games played
+// [x] Create variable to store games user won
+// [ ] Calculate user win percentage
+// [ ] Display user win percentage
+// [ ] Reset win percentage with button in view
+// [ ] --Clear variables when reset is clicked
