@@ -1,9 +1,95 @@
+/* imports */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* global styles */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+button {
+  color: hsla(0, 0%, 100%, 0.96);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  background-color: rgb(255, 56, 92);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 25px 20px -20px;
+}
+
+/* typography styles */
 html,
 body {
+  color: rgb(34, 34, 34);
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+}
+
+/* section/element styles */
+.gameboard {
+  width: calc(100vw - 3rem);
+  height: calc(100vh - 3rem);
+  padding: 0;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 0.75fr 2fr;
+  gap: 1rem;
+}
+
+.gameboard__computer,
+.gameboard__user {
+  width: 100%;
+  padding: 2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    farthest-corner at 40px 40px,
+    rgba(255, 56, 92, 0.04) 30%,
+    rgba(255, 56, 92, 0.5)
+  );
+  border-radius: 2.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 25px 20px -20px;
+}
+
+.gameboard__computer-selection,
+.gameboard__user-selection {
+  font-size: 2.488rem;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameboard__dialog {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameboard__para {
+  font-size: 1.728rem;
+}
+
+.gameboard__btn-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
