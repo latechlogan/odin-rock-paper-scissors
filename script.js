@@ -92,10 +92,3 @@ function calcWinPercentage() {
   let decimal = gamesWon / gamesPlayed;
   return `${(decimal * 100).toFixed(2)}%`;
 }
-
-// [x] Create variable to store games played
-// [x] Create variable to store games user won
-// [x] Calculate user win percentage
-// [ ] Display user win percentage
-// [ ] Reset win percentage with button in view
-// [ ] --Clear variables when reset is clicked
