@@ -2,7 +2,6 @@
 const CHOICES = ["Rock", "Paper", "Scissors"];
 
 let gamesPlayed = 0;
-let gamesWon = 0;
 
 // Start game sequence with user click
 document.addEventListener("click", (e) => {
@@ -31,7 +30,6 @@ document.addEventListener("click", (e) => {
           : updateView(userWins());
       }
     }
-    updateView("", "", "", calcWinPercentage());
   }
 });
 
@@ -47,7 +45,7 @@ function getCompSelection() {
 }
 
 //  Alert the winner
-function updateView(message, userSelection, compSelection, winPercent) {
+function updateView(message, userSelection, compSelection) {
   if (message) {
     document.getElementById("gameboard-para").textContent = message;
   }
@@ -59,36 +57,12 @@ function updateView(message, userSelection, compSelection, winPercent) {
   if (compSelection) {
     document.getElementById("computer-selection").textContent = compSelection;
   }
-
-  if (winPercent) {
-    if (document.getElementById("win-percentage") === null) {
-      let para = document.createElement("p");
-      para.setAttribute("class", "gameboard__win-percentage");
-      para.setAttribute("id", "win-percentage");
-      document.getElementById("gameboard-dialog").appendChild(para);
-    }
-    if (gamesPlayed < 10) {
-      document.getElementById("win-percentage").textContent = `
-        Play ${10 - gamesPlayed} more games to see your win percentage.
-      `;
-    } else {
-      document.getElementById("win-percentage").textContent = `
-        Win Percentage: ${winPercent}
-      `;
-    }
-  }
 }
 
 function userWins() {
-  gamesWon++;
   return "You win!";
 }
 
 function compWins() {
   return "You lose...";
-}
-
-function calcWinPercentage() {
-  let decimal = gamesWon / gamesPlayed;
-  return `${(decimal * 100).toFixed(2)}%`;
 }
