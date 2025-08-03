@@ -1,33 +1,37 @@
 // Create Rock, Paper, Scissors array
 const CHOICES = ["Rock", "Paper", "Scissors"];
 
-let gamesPlayed = 0;
+const gameboardPara = document.querySelector("#gameboard-para");
+const userDisplay = document.querySelector("#user-selection");
+const cpuDisplay = document.querySelector("#computer-selection");
+
+let cpuGamesWon = 0;
+let userGamesWon = 0;
 
 // Start game sequence with user click
 document.addEventListener("click", (e) => {
   if (e.target.value != null || e.target.value != undefined) {
-    gamesPlayed++;
     let userSelection = getUserSelection(e.target);
-    let compSelection = getCompSelection();
+    let cpuSelection = getCpuSelection();
 
-    updateView("", userSelection, compSelection);
+    updateView("", userSelection, cpuSelection);
 
     //  Compare user input to computer input
-    if (userSelection === compSelection) {
+    if (userSelection === cpuSelection) {
       updateView("It's a tie!");
     } else {
       if (userSelection === "Rock") {
-        compSelection === "Paper"
-          ? updateView(compWins())
-          : updateView(userWins());
+        cpuSelection === "Paper"
+          ? updateView(handleCpuWin())
+          : updateView(handleUserWin());
       } else if (userSelection === "Paper") {
-        compSelection === "Scissors"
-          ? updateView(compWins())
-          : updateView(userWins());
+        cpuSelection === "Scissors"
+          ? updateView(handleCpuWin())
+          : updateView(handleUserWin());
       } else if (userSelection === "Scissors") {
-        compSelection === "Rock"
-          ? updateView(compWins())
-          : updateView(userWins());
+        cpuSelection === "Rock"
+          ? updateView(handleCpuWin())
+          : updateView(handleUserWin());
       }
     }
   }
@@ -39,30 +43,104 @@ function getUserSelection(target) {
 }
 
 //  Create computer input
-function getCompSelection() {
+function getCpuSelection() {
   let i = Math.floor(Math.random() * 3);
   return CHOICES[i];
 }
 
 //  Alert the winner
-function updateView(message, userSelection, compSelection) {
+function updateView(message, userSelection, cpuSelection) {
   if (message) {
-    document.getElementById("gameboard-para").textContent = message;
+    gameboardPara.textContent = message;
   }
 
   if (userSelection) {
-    document.getElementById("user-selection").textContent = userSelection;
+    userDisplay.textContent = userSelection;
   }
 
-  if (compSelection) {
-    document.getElementById("computer-selection").textContent = compSelection;
+  if (cpuSelection) {
+    cpuDisplay.textContent = cpuSelection;
   }
+
+  updateWinPills();
 }
 
-function userWins() {
+function handleUserWin() {
+  userGamesWon++;
   return "You win!";
 }
 
-function compWins() {
+function handleCpuWin() {
+  cpuGamesWon++;
   return "You lose...";
+}
+
+function updateWinPills() {
+  let cpuPills = document.querySelectorAll(".cpu-win-pill");
+  let userPills = document.querySelectorAll(".user-win-pill");
+
+  for (i = 0; i < cpuGamesWon; i++) {
+    cpuPills[i].classList.add("filled");
+  }
+
+  for (i = 0; i < userGamesWon; i++) {
+    userPills[i].classList.add("filled");
+  }
+
+  alertGameWinner();
+}
+
+function alertGameWinner() {
+  if (userGamesWon === 5) {
+    tempDisableBtns();
+    gameboardPara.textContent = "Congratulations!";
+    userDisplay.textContent = "WINNER";
+    cpuDisplay.textContent = "";
+    setTimeout(() => {
+      resetGame();
+    }, 3000);
+  }
+  if (cpuGamesWon === 5) {
+    tempDisableBtns();
+    gameboardPara.textContent = "Better luck next time.";
+    cpuDisplay.textContent = "WINNER";
+    userDisplay.textContent = "";
+    setTimeout(() => {
+      resetGame();
+    }, 3000);
+  }
+}
+
+function resetGame() {
+  userGamesWon = 0;
+  cpuGamesWon = 0;
+
+  document.querySelectorAll(".user-win-pill").forEach((element) => {
+    if (element.classList.contains("filled")) {
+      element.classList.remove("filled");
+    }
+  });
+
+  document.querySelectorAll(".cpu-win-pill").forEach((element) => {
+    if (element.classList.contains("filled")) {
+      element.classList.remove("filled");
+    }
+  });
+
+  cpuDisplay.textContent = "";
+  userDisplay.textContent = "";
+  gameboardPara.textContent = "Rock, paper, or scissors?";
+}
+
+function tempDisableBtns() {
+  const btns = document.querySelectorAll("button");
+
+  btns.forEach((btn) => {
+    btn.disabled = true;
+  });
+  setTimeout(() => {
+    btns.forEach((btn) => {
+      btn.disabled = false;
+    });
+  }, 3000);
 }
