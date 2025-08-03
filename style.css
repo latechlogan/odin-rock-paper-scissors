@@ -19,10 +19,10 @@ button {
   color: hsla(0, 0%, 100%, 0.96);
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: rgb(255, 56, 92);
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 25px 20px -20px;
 }
 
@@ -43,6 +43,7 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
+  background-color: #f6f6f6;
 }
 
 .gameboard {
@@ -53,7 +54,7 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 0.75fr 2fr;
+  grid-template-rows: 2fr 0.5fr 2fr;
   gap: 1rem;
 }
 
@@ -66,13 +67,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(
+  /* background: radial-gradient(
     farthest-corner at 40px 40px,
     rgba(255, 56, 92, 0.04) 30%,
     rgba(255, 56, 92, 0.5)
-  );
-  border-radius: 2rem;
+  ); */
+  background-color: #fff;
+  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 25px 20px -20px;
+}
+
+.gameboard__computer > p,
+.gameboard__user > p {
+  width: 100%;
+  min-height: 58px;
+  padding: 0;
+  margin: 2rem 0;
 }
 
 .gameboard__computer-selection,
@@ -99,14 +109,11 @@ body {
   font-size: 1.728rem;
   text-align: center;
   padding: 0;
-  margin: 1.5rem 0 0 0;
-}
-
-.gameboard__win-percentage {
-  color: rgba(34, 34, 34, 0.64);
-  text-align: center;
-  text-wrap: balance;
-  line-height: 1.4;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .gameboard__btn-wrapper {
@@ -114,4 +121,25 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
+}
+
+.win-pill-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.win-pill-container > p {
+  padding: 0;
+  margin: 0;
+}
+
+.win-pill {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: rgba(255, 56, 92, 0.2);
+  border-radius: 50%;
 }
