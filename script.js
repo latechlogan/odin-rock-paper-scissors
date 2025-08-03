@@ -18,7 +18,7 @@ document.addEventListener("click", (e) => {
 
     //  Compare user input to computer input
     if (userSelection === cpuSelection) {
-      updateView("It's a tie!");
+      updateView("It's a tie.");
     } else {
       if (userSelection === "Rock") {
         cpuSelection === "Paper"
@@ -72,7 +72,7 @@ function handleUserWin() {
 
 function handleCpuWin() {
   cpuGamesWon++;
-  return "You lose...";
+  return "You lose.";
 }
 
 function updateWinPills() {
