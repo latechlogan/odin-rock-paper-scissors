@@ -140,6 +140,10 @@ body {
 .win-pill {
   width: 0.75rem;
   height: 0.75rem;
-  background-color: rgba(255, 56, 92, 0.2);
+  background-color: rgba(255, 56, 92, 0.24);
   border-radius: 50%;
+}
+
+.win-pill.filled {
+  background-color: rgba(255, 56, 92, 1);
 }
